@@ -1,6 +1,9 @@
 from pprint import pprint
 import requests
 from bs4 import BeautifulSoup
+from os import system
+
+system("cls")
 
 url = "https://www.codewithharry.com/"
 # trying to access any url with the help of request module
@@ -80,7 +83,22 @@ if resp.status_code >= 200 and resp.status_code < 400:
     # we can iterate through the content of the parent to find the child element inside of it
     # for elem in paras[1].content:
     #     print(elem)
-    # print(type(paras[0].find_parents()))
+
+    # accessing the parent of the an element
+    parents = first_para.parents # will find all the parents of the following element from the begining of the document
+    for elem in parents:
+        # print(elem.name)
+        pass
+
+    # accessing the siblings of the elements
+    # print(first_para.next_sibling.previous_sibling.name)
+
+
+    #  we can also query using css selector, i.e. jQuery '#' -> with id , '.' -> with class
+
+    text_sm_elems = tree_str.select(".text-sm")
+    print(text_sm_elems[0].string)
+
 
 
 # closing the connection of the response object
